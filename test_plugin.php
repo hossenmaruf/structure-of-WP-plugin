@@ -27,6 +27,16 @@
 if (!defined('ABSPATH')) exit;
 
 
+
+     require_once __DIR__ . '/vendor/autoload.php' ;
+
+
+
+
+
+
+
+
 final class Test_Plugin
 {
 
@@ -70,9 +80,11 @@ final class Test_Plugin
 
     public function init_plugin()
     {
+
+        new test\plugin\Admin\Menu(); 
+
+
     }
-
-
 
 
     public function activate()
