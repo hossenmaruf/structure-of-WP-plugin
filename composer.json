@@ -1,0 +1,28 @@
+{
+    "name": "hossenmaruf/test-plugin",
+    "description": "this a sample test plugin project",
+    "type": "wordpress-plugin",
+    "license": "GPLv2",
+    "autoload": {
+        "psr-4": {
+            "Hossenmaruf\\TestPlugin\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "hossenmaruf",
+            "email": "severusmaruf740@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {} ,
+     "autoload" : {
+           
+            "psr-4" : {
+                "test\\plugin\\" : "includes/"
+            } ,
+
+            "files" : []
+    
+     }
+}
