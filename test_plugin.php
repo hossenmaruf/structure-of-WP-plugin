@@ -1,52 +1,40 @@
+
 <?php
-
-
 /**
- * Plugin Name
- *
- * @package           PluginPackage
- * @author            hossen maruf
- * @copyright         2022 lampshades
- * @license           GPL-2.0-or-later
- *
- * @wordpress-plugin
- * Plugin Name:       test_plugin
- * Plugin URI:        https://example.com/plugin-name
- * Description:       plugin dev project
- * Version:           1.0
- * Requires at least: 5.2
- * Requires PHP:      7.2
- * Author:            hossen maruf
- * Author URI:        https://example.com
- * Text Domain:       test_plugin
- * License:           GPL v2 or later
- * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Update URI:        https://example.com/my-plugin/
+ * Plugin Name: test-plugin
+ * Description: A tutorial plugin for weDevs Academy
+ * Plugin URI: https://severusmaruf740@gmail.com
+ * Author: hossen maruf
+ * Author URI: https://severusmaruf740@gmail.com
+ * Version: 1.0
+ * License: GPL2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 
+require_once __DIR__ . '/vendor/autoload.php';
 
-
-     require_once __DIR__ . '/vendor/autoload.php' ;
-
-
-
-
-
-
-
-
+/**
+ * The main plugin class
+ */
 final class Test_Plugin
 {
 
+    /**
+     * Plugin version
+     *
+     * @var string
+     */
     const version = '1.0';
 
-
-
+    /**
+     * Class construcotr
+     */
     private function __construct()
     {
-
         $this->define_constants();
 
         register_activation_hook(__FILE__, [$this, 'activate']);
@@ -54,9 +42,9 @@ final class Test_Plugin
         add_action('plugins_loaded', [$this, 'init_plugin']);
     }
 
+
     public static function init()
     {
-
         static $instance = false;
 
         if (!$instance) {
@@ -66,55 +54,61 @@ final class Test_Plugin
         return $instance;
     }
 
+    /**
+     * Define the required plugin constants
+     *
+     * @return void
+     */
     public function define_constants()
     {
-
         define('M_VERSION', self::version);
-        define('M_FILE', __FILE__);
-        define('M_PATH', __DIR__);
-        define('M_URL', plugins_url('',  M_FILE));
-        define('M_ASSETS', M_URL . '/assets');
+        define('M__FILE', __FILE__);
+        define('M__PATH', __DIR__);
+        define('M__URL', plugins_url('', M__FILE));
+        define('M__ASSETS', M__URL . '/assets');
     }
 
-
-
+    /**
+     * Initialize the plugin
+     *
+     * @return void
+     */
     public function init_plugin()
     {
 
-        new test\plugin\Admin\Menu(); 
-
-
+        if (is_admin()) {
+            new test\plugin\Admin();
+        } else {
+            new test\plugin\Frontend();
+        }
     }
 
-
+    /**
+     * Do stuff upon plugin activation
+     *
+     * @return void
+     */
     public function activate()
     {
-
-        $installed = get_option('m_installed');
+        $installed = get_option('M_installed');
 
         if (!$installed) {
-
-
-            update_option('m_installed', time());
+            update_option('M_installed', time());
         }
 
-
-        update_option('m_version', M_VERSION);
+        update_option('M_version', M_VERSION);
     }
 }
 
-
-
-
-
-
-
-
-
-
+/**
+ * Initializes the main plugin
+ *
+ * @return \WeDevs_Academy
+ */
 function test_plugin()
 {
     return Test_Plugin::init();
 }
 
+// kick-off the plugin
 test_plugin();
