@@ -30,7 +30,7 @@ class Menu
 
         add_submenu_page($paraent_slug, __('Address Book', 'test_plugin'), __('Address Book', 'test_plugin'), $capability,  $paraent_slug, [$this, 'addressbook_page']);
 
-        add_submenu_page($paraent_slug, __('Sittings', 'test_plugin'), __('sittings', 'test_plugin'), $capability,  'test-plugin-sittings', [$this, 'sittings_page']);
+        add_submenu_page($paraent_slug, __('Settings', 'test_plugin'), __('settings', 'test_plugin'), $capability,  'test-plugin-sittings', [$this, 'settings_page']);
     }
 
     /**
@@ -48,8 +48,8 @@ class Menu
 
 
 
-    public function sittings_page()
+    public function settings_page()
     {
-        echo 'hello from sittings';
+        echo 'hello from settings';
     }
 }
