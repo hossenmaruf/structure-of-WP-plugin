@@ -90,19 +90,17 @@ final class Test_Plugin
      */
     public function activate()
     {
-      
-      $installer =  new \test\plugin\installer() ;
 
-       $installer -> run() ;
+        $installer =  new \test\plugin\installer();
 
-
+        $installer->run();
     }
 }
 
 /**
  * Initializes the main plugin
  *
- * @return \WeDevs_Academy
+ * @return \Test_plugins
  */
 function test_plugin()
 {

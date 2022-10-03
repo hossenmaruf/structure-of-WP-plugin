@@ -1,19 +1,21 @@
-<?php 
-
- 
-namespace test\plugin ;
-
-class installer {
+<?php
 
 
-     public function run()
-     {
-        $this -> add_version() ;
-        $this -> create_tables() ;
-     }
+namespace test\plugin;
+
+class installer
+{
 
 
-     public function add_version (){
+    public function run()
+    {
+        $this->add_version();
+        $this->create_tables();
+    }
+
+
+    public function add_version()
+    {
         $installed = get_option('M_installed');
 
         if (!$installed) {
@@ -21,9 +23,10 @@ class installer {
         }
 
         update_option('M_version', M_VERSION);
-     }
+    }
 
-     public function create_tables() {
+    public function create_tables()
+    {
         global $wpdb;
 
         $charset_collate = $wpdb->get_charset_collate();
@@ -38,12 +41,10 @@ class installer {
           PRIMARY KEY (`id`)
         ) $charset_collate";
 
-        if ( ! function_exists( 'dbDelta' ) ) {
+        if (!function_exists('dbDelta')) {
             require_once ABSPATH . 'wp-admin/includes/upgrade.php';
         }
 
-        dbDelta( $schema );
+        dbDelta($schema);
     }
-
-
 }
