@@ -1,6 +1,6 @@
 <?php
 
-namespace WeDevs\Academy\Frontend;
+namespace test\plugin\includes\Frontend;
 
 /**
  * Shortcode handler class
@@ -28,4 +28,4 @@ class Shortcode
     {
         return 'Hello from Shortcode';
     }
-}
+} 

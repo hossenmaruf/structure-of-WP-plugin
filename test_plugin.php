@@ -90,13 +90,12 @@ final class Test_Plugin
      */
     public function activate()
     {
-        $installed = get_option('M_installed');
+      
+      $installer =  new \test\plugin\installer() ;
 
-        if (!$installed) {
-            update_option('M_installed', time());
-        }
+       $installer -> run() ;
 
-        update_option('M_version', M_VERSION);
+
     }
 }
 
