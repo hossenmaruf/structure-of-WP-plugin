@@ -14,7 +14,7 @@ function m_ac_insert_address($args = [])
     if (empty($args['name'])) {
         return new \WP_Error('no-name', __('You must provide a name.', 'hossenmaruf'));
     }
-
+    
     $defaults = [
         'name'       => '',
         'address'    => '',
@@ -62,24 +62,18 @@ function m_ac_get_addresses($args = [])
 
     $args = wp_parse_args($args, $defaults);
 
-    $items = $wpdb->get_results(
-
-        $wpdb->prepare(
-
-
-            "SELECT * FROM {$wpdb->prefix}ac_addresses
-  ORDER BY {$args['orderby']} {$args['order']}
-    LIMIT %d, %d",
-            $args['offset'],
-            $args['number']
-
-        )
+    $sql = $wpdb->prepare(
+        "SELECT * FROM {$wpdb->prefix}ac_addresses
+        ORDER BY {$args['orderby']} {$args['order']}
+        LIMIT %d, %d",
+        $args['offset'],
+        $args['number']
     );
 
+    $items = $wpdb->get_results($sql);
 
     return $items;
 }
-
 
 function m_ac_addresses_count()
 {
