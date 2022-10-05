@@ -43,3 +43,48 @@ function m_ac_insert_address($args = [])
 
     return $wpdb->insert_id;
 }
+
+
+function m_ac_get_addresses($args = [])
+{
+
+    global $wpdb;
+
+    $defaults = [
+
+        'number' => 20,
+        'offset' => 0,
+        'orderby' => 'id',
+        'order'   => 'ASC'
+
+    ];
+
+
+    $args = wp_parse_args($args, $defaults);
+
+    $items = $wpdb->get_results(
+
+        $wpdb->prepare(
+
+
+            "SELECT * FROM {$wpdb->prefix}ac_addresses
+  ORDER BY {$args['orderby']} {$args['order']}
+    LIMIT %d, %d",
+            $args['offset'],
+            $args['number']
+
+        )
+    );
+
+
+    return $items;
+}
+
+
+function m_ac_addresses_count()
+{
+
+    global $wpdb;
+
+    return (int) $wpdb->get_var("SELECT count(id) FROM {$wpdb->prefix}ac_addresses");
+}
