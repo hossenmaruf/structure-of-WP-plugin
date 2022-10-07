@@ -1,17 +1,17 @@
 <div class="wrap">
 
 
-  <?php if (isset($_GET['inserted'])) { ?>
+<?php if(isset($_GET['inserted'])) { ?>
+      
+      <div class="notice notice-success"  > 
+         
 
-    <div class="notice notice-success">
+     <p> <?php    _e('Address has been added', 'hossenmaruf')?>    </p>
+     
+ </div>
 
 
-      <p> <?php _e('Address has been added', 'hossenmaruf') ?> </p>
-
-    </div>
-
-
-  <?php } ?>
+  <?php }?>
 
 
 
@@ -29,7 +29,7 @@
 
     $table = new \test\plugin\Admin\Address_List();
     $table->prepare_items();
-    $table->search_box('search', 'search_id');
+    $table-> search_box('search', 'search_id') ;
     $table->display();
 
     ?>

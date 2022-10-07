@@ -24,5 +24,6 @@ class Admin
     {
 
         add_action('admin_init', [$addressbook, 'form_handler']);
+        add_action('admin_post_m-ac-delete-address', [$addressbook, 'delete_address']);
     }
 }

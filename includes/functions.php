@@ -25,54 +25,50 @@ function m_ac_insert_address($args = [])
 
     $data = wp_parse_args($args, $defaults);
 
-     if(isset($data['id'])){
+    if (isset($data['id'])) {
 
 
-      $id = $data['id'] ;
-      unset($data['id']) ;
+        $id = $data['id'];
+        unset($data['id']);
 
-        $updated = $wpdb -> update(
+        $updated = $wpdb->update(
 
-            $wpdb-> prefix. 'ac_addresses' ,
-            $data ,
-            ['id' => $id] ,
+            $wpdb->prefix . 'ac_addresses',
+            $data,
+            ['id' => $id],
             [
                 '%s',
                 '%s',
                 '%s',
                 '%d',
                 '%s'
-            ] ,
+            ],
             ['%d']
-        ) ;
+        );
 
 
-     return $updated ;
+        return $updated;
+    } else {
 
+        $inserted = $wpdb->insert(
+            $wpdb->prefix . 'ac_addresses',
+            $data,
+            [
+                '%s',
+                '%s',
+                '%s',
+                '%d',
+                '%s'
+            ]
+        );
 
+        if (!$inserted) {
+            return new \WP_Error('failed-to-insert', __('Failed to insert data', 'hossenmaruf'));
+        }
 
-
-     }
-     else {
-
-    $inserted = $wpdb->insert(
-        $wpdb->prefix . 'ac_addresses',
-        $data,
-        [
-            '%s',
-            '%s',
-            '%s',
-            '%d',
-            '%s'
-        ]
-    );
-
-    if (!$inserted) {
-        return new \WP_Error('failed-to-insert', __('Failed to insert data', 'hossenmaruf'));
+        return $wpdb->insert_id;
     }
-
-    return $wpdb->insert_id;
-}}
+}
 
 
 function m_ac_get_addresses($args = [])

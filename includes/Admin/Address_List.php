@@ -109,6 +109,7 @@ class Address_List extends \WP_List_Table
         $actions = [];
 
         $actions['edit']   = sprintf('<a href="%s" title="%s">%s</a>', admin_url('admin.php?page=test_plugin&action=edit&id=' . $item->id), $item->id, __('Edit', 'hossenmaruf'), __('Edit', 'hossenmaruf'));
+
         $actions['delete'] = sprintf('<a href="%s" class="submitdelete" onclick="return confirm(\'Are you sure?\');" title="%s">%s</a>', wp_nonce_url(admin_url('admin-post.php?action=m-ac-delete-address&id=' . $item->id), 'm-ac-delete-address'), $item->id, __('Delete', 'hossenmaruf'), __('Delete', 'hossenmaruf'));
 
         return sprintf(
