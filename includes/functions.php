@@ -14,7 +14,7 @@ function m_ac_insert_address($args = [])
     if (empty($args['name'])) {
         return new \WP_Error('no-name', __('You must provide a name.', 'hossenmaruf'));
     }
-    
+
     $defaults = [
         'name'       => '',
         'address'    => '',
@@ -81,4 +81,33 @@ function m_ac_addresses_count()
     global $wpdb;
 
     return (int) $wpdb->get_var("SELECT count(id) FROM {$wpdb->prefix}ac_addresses");
+}
+
+
+function m_ac_get_address($id)
+{
+
+    global $wpdb;
+
+
+    return $wpdb->get_row(
+
+
+        $wpdb->prepare("SELECT * FROM {$wpdb->prefix}ac_addresses WHERE id = $id")
+    );
+}
+
+function m_ac_delete_address($id)
+{
+
+    global $wpdb;
+
+
+    return $wpdb->delete(
+
+        $wpdb->prefix . 'ac_addresses',
+        ['id' => $id],
+        ['%d']
+
+    );
 }

@@ -2,14 +2,16 @@
 
 namespace test\plugin\Admin;
 
+use test\plugin\Traits\From_Error;
+
 /**
  * Addressbook Handler class
  */
 class Addressbook
 {
 
-    public $errors = [];
 
+    use From_Error;
     /**
      * Plugin page handler
      *
@@ -74,6 +76,7 @@ class Addressbook
         }
 
         if (!empty($this->errors)) {
+
             return;
         }
 
