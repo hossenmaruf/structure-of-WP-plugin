@@ -25,6 +25,36 @@ function m_ac_insert_address($args = [])
 
     $data = wp_parse_args($args, $defaults);
 
+     if(isset($data['id'])){
+
+
+      $id = $data['id'] ;
+      unset($data['id']) ;
+
+        $updated = $wpdb -> update(
+
+            $wpdb-> prefix. 'ac_addresses' ,
+            $data ,
+            ['id' => $id] ,
+            [
+                '%s',
+                '%s',
+                '%s',
+                '%d',
+                '%s'
+            ] ,
+            ['%d']
+        ) ;
+
+
+     return $updated ;
+
+
+
+
+     }
+     else {
+
     $inserted = $wpdb->insert(
         $wpdb->prefix . 'ac_addresses',
         $data,
@@ -42,7 +72,7 @@ function m_ac_insert_address($args = [])
     }
 
     return $wpdb->insert_id;
-}
+}}
 
 
 function m_ac_get_addresses($args = [])
