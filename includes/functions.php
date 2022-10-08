@@ -15,36 +15,36 @@ function m_ac_insert_address($args = [])
         return new \WP_Error('no-name', __('You must provide a name.', 'hossenmaruf'));
     }
 
-    $defaults = [
-        'name'       => '',
-        'address'    => '',
-        'phone'      => '',
-        'created_by' => get_current_user_id(),
-        'created_at' => current_time('mysql'),
+        $defaults = [
+                    'name'       => '',
+                    'address'    => '',
+                    'phone'      => '',
+                    'created_by' => get_current_user_id(),
+                    'created_at' => current_time('mysql'),
     ];
 
-    $data = wp_parse_args($args, $defaults);
+        $data = wp_parse_args($args, $defaults);
 
-    if (isset($data['id'])) {
+        if (isset($data['id'])) {
 
 
-        $id = $data['id'];
-        unset($data['id']);
+            $id = $data['id'];
+            unset($data['id']);
 
-        $updated = $wpdb->update(
+            $updated = $wpdb->update(
 
-            $wpdb->prefix . 'ac_addresses',
-            $data,
-            ['id' => $id],
-            [
-                '%s',
-                '%s',
-                '%s',
-                '%d',
-                '%s'
-            ],
-            ['%d']
-        );
+                $wpdb->prefix . 'ac_addresses',
+                $data,
+                ['id' => $id],
+                [
+                    '%s',
+                    '%s',
+                    '%s',
+                    '%d',
+                    '%s'
+                ],
+                ['%d']
+            );
 
 
         return $updated;
@@ -78,28 +78,27 @@ function m_ac_get_addresses($args = [])
 
     $defaults = [
 
-        'number' => 20,
-        'offset' => 0,
-        'orderby' => 'id',
-        'order'   => 'ASC'
+            'number' => 20,
+            'offset' => 0,
+            'order'   => 'ASC'
 
     ];
 
 
-    $args = wp_parse_args($args, $defaults);
+        $args = wp_parse_args($args, $defaults);
 
-    $sql = $wpdb->prepare(
-        "SELECT * FROM {$wpdb->prefix}ac_addresses
-        ORDER BY {$args['orderby']} {$args['order']}
-        LIMIT %d, %d",
-        $args['offset'],
-        $args['number']
-    );
+        $sql = $wpdb->prepare(
+            "SELECT * FROM {$wpdb->prefix}ac_addresses
+            ORDER BY {$args['orderby']} {$args['order']}
+            LIMIT %d, %d",
+            $args['offset'],
+            $args['number']
+        );
 
-    $items = $wpdb->get_results($sql);
+        $items = $wpdb->get_results($sql);
 
-    return $items;
-}
+        return $items;
+    }
 
 function m_ac_addresses_count()
 {
@@ -136,4 +135,4 @@ function m_ac_delete_address($id)
         ['%d']
 
     );
-}
+} 

@@ -75,6 +75,10 @@ final class Test_Plugin
     public function init_plugin()
     {
 
+
+      new \test\plugin\Assets() ;
+
+
         if (is_admin()) {
             new test\plugin\Admin();
         } else {

@@ -26,6 +26,11 @@ class Shortcode
      */
     public function render_shortcode($atts, $content = '')
     {
+
+        wp_enqueue_scripts('academy-script');
+        wp_enqueue_style('academy-style');
+
+        
         return 'Hello from Shortcode';
     }
 } 

@@ -1,7 +1,11 @@
 <div class="wrap">
 
 
-    <h1> <?php _e('New Address', 'hossenmaruf')  ?> </h1>
+    <h1> <?php _e('New Address', 'hossenmaruf')      
+    
+   
+   
+     ?> </h1>
 
     <!-- <?php var_dump($this->errors);    ?> -->
 
@@ -24,7 +28,7 @@
                         <input type="text" name="name" id="name" class="regular-text" value="">
 
                         <?php if ($this->has_error('name')) { ?>
-                            <p class="description error"><?php echo $this->get_error('name'); ?> </p>
+                        <p class="description error"><?php echo $this->get_error('name'); ?> </p>
                         <?php } ?>
 
                     </td>
@@ -53,7 +57,7 @@
                         <input type="text" name="phone" id="phone" class="regular-text" value="">
 
                         <?php if ($this->has_error('phone')) { ?>
-                            <p class="description error"><?php echo $this->get_error('phone'); ?> </p>
+                        <p class="description error"><?php echo $this->get_error('phone'); ?> </p>
                         <?php } ?>
 
 

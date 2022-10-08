@@ -120,7 +120,7 @@ class Addressbook
     public function delete_address()
     {
 
-
+       
         if (!wp_verify_nonce($_REQUEST['_wpnonce'], 'm-ac-delete-address')) {
             wp_die('Are you cheating?');
         }

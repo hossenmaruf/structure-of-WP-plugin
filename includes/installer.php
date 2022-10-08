@@ -47,4 +47,9 @@ class installer
 
         dbDelta($schema);
     }
-}
+}   
+
+
+
+
+ 
