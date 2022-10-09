@@ -77,6 +77,7 @@ final class Test_Plugin
 
 
       new \test\plugin\Assets() ;
+    
 
 
         if (is_admin()) {

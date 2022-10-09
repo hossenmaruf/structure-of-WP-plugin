@@ -51,15 +51,10 @@ class Menu
    public function  enqeue_assets(){
 
       wp_enqueue_style( 'academy-admin-style') ;
+      wp_enqueue_script('academy-admin-script') ;
 
     
    }
-
-
-
-
-
-
 
 
 
