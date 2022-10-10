@@ -115,8 +115,8 @@ class Address_List extends \WP_List_Table
 
         $actions['edit']   = sprintf('<a href="%s" title="%s">%s</a>', admin_url('admin.php?page=test_plugin&action=edit&id=' . $item->id), $item->id, __('Edit', 'hossenmaruf'), __('Edit', 'hossenmaruf'));
 
-        $actions['delete'] = sprintf('<a href="#" class="submitdelete" data-id="%s">%s</a>', $item->id, __('Delete', 'hossenmaruf'), );
-
+        $actions['delete'] = sprintf( '<a href="#" class="submitdelete" data-id="%s">%s</a>', $item->id, __( 'Delete', 'hossenmaruf' ) );
+        
         return sprintf(
             '<a href="%1$s"><strong>%2$s</strong></a> %3$s',
             admin_url('admin.php?page=test_plugin&action=view&id' . $item->id),

@@ -77,6 +77,12 @@ final class Test_Plugin
 
 
       new \test\plugin\Assets() ;
+
+
+
+          if(defined('DOING_AJAX') && DOING_AJAX) {
+            new \test\plugin\Ajax() ;
+          }
     
 
 
