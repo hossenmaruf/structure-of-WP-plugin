@@ -92,6 +92,12 @@ class Assets
         }
 
 
+        wp_localize_script( 'academy-enquiry-script', 'test', [
+            'ajaxurl' => admin_url( 'admin-ajax.php' ),
+            'error'   => __( 'Something went wrong', 'hossenmaruf' ),
+        ] );
+
+
 
         wp_localize_script('academy-admin-script', 'test', [
 
