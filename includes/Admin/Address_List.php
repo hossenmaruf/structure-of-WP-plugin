@@ -153,7 +153,7 @@ class Address_List extends \WP_List_Table
 
         $this->_column_headers = [$column, $hidden, $sortable];
 
-        $per_page     = 10;
+        $per_page     = 2;
         $current_page = $this->get_pagenum();
         $offset       = ($current_page - 1) * $per_page;
 
