@@ -170,8 +170,8 @@ class Address_List extends \WP_List_Table
         $this->items = m_ac_get_addresses($args);
 
         $this->set_pagination_args([
-            'total_items' => m_ac_addresses_count(),
-            'per_page'    => $per_page
+            'total_items' => m_ac_address_count(),
+            'per_page'    => $per_page,
         ]);
     }
 }
