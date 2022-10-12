@@ -91,6 +91,8 @@ final class Test_Plugin
         } else {
             new test\plugin\Frontend();
         }
+
+        new test\plugin\API();
     }
 
     /**
