@@ -4,15 +4,18 @@
 namespace test\plugin;
 
 
-class API {
+class API
+{
 
-      function __construct()
-      {
-        add_action( 'rest_api_init', [ $this, 'register_api' ]);
-      }
+    function __construct()
+    {
+        add_action('rest_api_init', [$this, 'register_api']);
+    }
 
-      function register_api(){
-        
-      }
-    
+    function register_api()
+    {
+
+        $addressbook = new API\Addressbook();
+        $addressbook->register_routes();
+    }
 }
