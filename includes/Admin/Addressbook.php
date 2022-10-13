@@ -2,7 +2,7 @@
 
 namespace test\plugin\Admin;
 
-use test\plugin\Traits\From_Error;
+use test\plugin\Traits\Form_Error;
 
 /**
  * Addressbook Handler class
@@ -11,7 +11,7 @@ class Addressbook
 {
 
 
-    use From_Error;
+    use Form_Error;
 
     /**
      * Plugin page handler

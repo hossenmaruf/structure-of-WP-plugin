@@ -6,7 +6,7 @@
 namespace test\plugin\Traits;
 
 
-trait From_Error
+trait Form_Error
 {
 
 
