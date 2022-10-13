@@ -12,7 +12,7 @@ namespace test\plugin ;
      */
     function __construct() {
         add_action( 'wp_ajax_m_academy_enquiry', [ $this, 'submit_enquiry'] );
-        add_action( 'wp_ajax_nopriv_wd_academy_enquiry', [ $this, 'submit_enquiry'] );
+        add_action( 'wp_ajax_nopriv_m_academy_enquiry', [ $this, 'submit_enquiry'] );
 
         add_action( 'wp_ajax_m-academy-delete-contact', [ $this, 'delete_contact'] );
     }

@@ -1,42 +1,27 @@
 <div class="wrap">
+    <h1 class="wp-heading-inline"><?php _e( 'Address Book', 'hossenmaruf' ); ?></h1>
 
+    <a href="<?php echo admin_url( 'admin.php?page=test_plugin&action=new' ); ?>"
+        class="page-title-action"><?php _e( 'Add New', 'hossenmaruf' ); ?></a>
 
-    <?php if(isset($_GET['inserted'])) { ?>
-
+    <?php if ( isset( $_GET['inserted'] ) ) { ?>
     <div class="notice notice-success">
-
-
-        <p> <?php    _e('Address has been added', 'hossenmaruf')?> </p>
-
+        <p><?php _e( 'Address has been added successfully!', 'hossenmaruf' ); ?></p>
     </div>
+    <?php } ?>
 
+    <?php if ( isset( $_GET['address-deleted'] ) && $_GET['address-deleted'] == 'true' ) { ?>
+    <div class="notice notice-success">
+        <p><?php _e( 'Address has been deleted successfully!', 'hossenmaruf' ); ?></p>
+    </div>
+    <?php } ?>
 
-    <?php }?>
-
-
-
-
-
-    <h1 class="wp-heading-inline"> Address Books </h1>
-
-    <a class="page-title-action" href=" <?php echo admin_url('admin.php?page=test_plugin&action=new')   ?>    ">
-        <?php _e('Add_NEW', 'hossenmaruf')   ?> </a>
-
-
-
-    <form action="" method="POST">
-
+    <form action="" method="post">
         <?php
-
-    $table = new \test\plugin\Admin\Address_List();
-    $table->prepare_items();
-    $table-> search_box('search', 'search_id') ;
-    $table->display();
-
-    ?>
-
+        $table = new \test\plugin\Admin\Address_List();
+        $table->prepare_items();
+        $table->search_box( 'search', 'search_id' );
+        $table->display();
+        ?>
     </form>
-
-
-
 </div>

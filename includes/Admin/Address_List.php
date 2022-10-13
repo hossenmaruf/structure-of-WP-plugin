@@ -12,11 +12,6 @@ if (!class_exists('WP_List_Table')) {
 class Address_List extends \WP_List_Table
 {
 
-
-  
-
-
-    
     function __construct()
     {
         parent::__construct([
@@ -114,9 +109,8 @@ class Address_List extends \WP_List_Table
         $actions = [];
 
         $actions['edit']   = sprintf('<a href="%s" title="%s">%s</a>', admin_url('admin.php?page=test_plugin&action=edit&id=' . $item->id), $item->id, __('Edit', 'hossenmaruf'), __('Edit', 'hossenmaruf'));
+        $actions['delete'] = sprintf('<a href="#" class="submitdelete" data-id="%s">%s</a>', $item->id, __('Delete', 'hossenmaruf'));
 
-        $actions['delete'] = sprintf( '<a href="#" class="submitdelete" data-id="%s">%s</a>', $item->id, __( 'Delete', 'hossenmaruf' ) );
-        
         return sprintf(
             '<a href="%1$s"><strong>%2$s</strong></a> %3$s',
             admin_url('admin.php?page=test_plugin&action=view&id' . $item->id),
@@ -153,7 +147,7 @@ class Address_List extends \WP_List_Table
 
         $this->_column_headers = [$column, $hidden, $sortable];
 
-        $per_page     = 2;
+        $per_page     = 20;
         $current_page = $this->get_pagenum();
         $offset       = ($current_page - 1) * $per_page;
 
@@ -171,7 +165,7 @@ class Address_List extends \WP_List_Table
 
         $this->set_pagination_args([
             'total_items' => m_ac_address_count(),
-            'per_page'    => $per_page,
+            'per_page'    => $per_page
         ]);
     }
 }

@@ -92,7 +92,7 @@ final class Test_Plugin
             new test\plugin\Frontend();
         }
 
-       // new test\plugin\API();
+        new test\plugin\API();
     }
 
     /**

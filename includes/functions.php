@@ -91,7 +91,7 @@ function m_ac_get_addresses( $args = [] ) {
     $args = wp_parse_args( $args, $defaults );
 
     $last_changed = wp_cache_get_last_changed( 'address' );
-    $key          = md5( serialize( array_diff_assoc( $args, $defaults ) ) ); //md5 change the int with hash
+    $key          = md5( serialize( array_diff_assoc( $args, $defaults ) ) );
     $cache_key    = "all:$key:$last_changed";
 
     $sql = $wpdb->prepare(
